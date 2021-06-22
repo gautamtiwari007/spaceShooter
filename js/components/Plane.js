@@ -1,11 +1,12 @@
 
 function Plane(scene) {
 	
-	var URL1 = "";
+	var texMap;
 	var URL2 = "";
 	storageRef.child('plane.png').getDownloadURL()
 		.then((url) => {
-		  URL1 = url;
+		  const textureLoader = new THREE.TextureLoader()
+		  texMap = textureLoader.load(`${url}`);
 		})
 		.catch((error) => {
 		    console.log(error);
@@ -13,49 +14,42 @@ function Plane(scene) {
 	
 	storageRef.child('plane.obj').getDownloadURL()
 		.then((url) => {
-		 URL2 = url;
+		 	var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})
+
+			var modelLoader = new THREE.OBJLoader()
+
+			this.model;
+			this.planeBndBox;
+
+			modelLoader.load
+				( 
+					URL2, 
+					(function(obj)
+					{
+						this.model = obj;
+
+						this.model.traverse( function (child) {
+								if ( child.isMesh ) {
+									child.material = modelMaterial;
+								}
+							}
+						)
+
+						// rotating, scaling down the plane model
+						this.model.rotation.x = Math.PI / 12;
+						this.model.position.z = -10;
+						this.model.scale.set(0.01, 0.01, 0.009);
+
+						scene.add(this.model);
+
+						this.planeBndBox = new THREE.Box3().setFromObject(this.model);
+
+					}).bind(this)
+				)
 		})
 		.catch((error) => {
 		    console.log(error);
 		});
-	
-	const textureLoader = new THREE.TextureLoader()
-	
-	var texMap = textureLoader.load(`${URL1}`);
-	
-	var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})
-
-	var modelLoader = new THREE.OBJLoader()
-
-	this.model;
-	this.planeBndBox;
-
-	modelLoader.load
-		( 
-			URL2, 
-			(function(obj)
-			{
-				this.model = obj;
-
-				this.model.traverse( function (child) {
-						if ( child.isMesh ) {
-							child.material = modelMaterial;
-						}
-					}
-				)
-
-				// rotating, scaling down the plane model
-				this.model.rotation.x = Math.PI / 12;
-				this.model.position.z = -10;
-				this.model.scale.set(0.01, 0.01, 0.009);
-				
-				scene.add(this.model);
-
-				this.planeBndBox = new THREE.Box3().setFromObject(this.model);
-
-			}).bind(this)
-		);
-
 	
 	this.update = function() {
 		this.model.position.z -= 0.4;
