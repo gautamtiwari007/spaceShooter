@@ -2,9 +2,7 @@
 function Skybox(scene, height) {
 	
 	    var cubeMaterials = [];
-
-	    var storage = firebase.storage();
-	    var storageRef = storage.ref();
+	
 	    storageRef.child('corona_ft.png').getDownloadURL()
 		.then((url) => {
 		 cubeMaterials[0] = new THREE.MeshBasicMaterial({ map: textureLoader.load(`${url}`), side: THREE.DoubleSide }); 
