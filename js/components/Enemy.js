@@ -16,7 +16,7 @@ function Enemy(scene, x, z) {
 	
 	var storage = firebase.storage();
     	var storageRef = storage.ref();
-   	storageRef.child('enemy.glb').getDownloadURL()
+   	storageRef.child('IronMan.glb').getDownloadURL()
         .then((url) => {
            URL = url;
         })
