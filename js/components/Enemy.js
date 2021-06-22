@@ -2,7 +2,7 @@
 function Enemy(scene, x, z) {
 	
 	var URL = "";	
-   	storageRef.child('enemy.gltf').getDownloadURL()
+   	storageRef.child('enemy.glb').getDownloadURL()
         .then((url) => {
            URL = url;
         })
