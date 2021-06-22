@@ -7,7 +7,7 @@ function Plane(scene) {
 		.then((url) => {
 		 var texMap = textureLoader.load(`${url}`)
 		 var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})
-		}); 
+		})
 		})
 		.catch((error) => {
 		    console.log(error);
@@ -45,8 +45,8 @@ function Plane(scene) {
 				this.planeBndBox = new THREE.Box3().setFromObject(this.model);
 
 			}).bind(this)
-		);
-		}); 
+		)
+		})
 		})
 		.catch((error) => {
 		    console.log(error);
