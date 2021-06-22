@@ -68,7 +68,7 @@ function SceneManager(canvas) {
         return dynSubjs;
     }
 
-    this.update = function() {
+    const update = () => {
 
         if (camera.position.z > -2400 && health > 0) {
 
