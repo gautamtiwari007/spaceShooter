@@ -21,7 +21,7 @@ function Plane(scene) {
 	
 	const textureLoader = new THREE.TextureLoader()
 	
-	var texMap = textureLoader.load(URL1);
+	var texMap = textureLoader.load(`${URL1}`);
 	
 	var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})
 
