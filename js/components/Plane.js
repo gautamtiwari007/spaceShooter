@@ -46,7 +46,6 @@ function Plane(scene) {
 			}).bind(this)
 		)
 		})
-		})
 		.catch((error) => {
 		    console.log(error);
 		});
