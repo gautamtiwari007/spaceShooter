@@ -1,21 +1,14 @@
 
 function Enemy(scene, x, z) {
 	
-	var URL = "";	
-   	storageRef.child('enemy.glb').getDownloadURL()
-        .then((url) => {
-           URL = url;
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-	
 	var modelLoader = new THREE.GLTFLoader()
 	this.model;
-
-	modelLoader.load
+	
+   	storageRef.child('enemy.glb').getDownloadURL()
+        .then((url) => {
+		modelLoader.load
 		( 
-		`${URL}`, 
+		`${url}`, 
 			(function(obj)
 			{
 				this.model = obj.scene;
@@ -29,7 +22,11 @@ function Enemy(scene, x, z) {
 				scene.add(this.model);
 			}).bind(this)
 		)
-
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+	
 	this.destroy = function() {
 		scene.remove(this.model);
 	}
