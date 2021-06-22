@@ -1,12 +1,22 @@
 
 function Missile(scene, x, z) {
 	
+	var URL = "";
+	
+	storageRef.child('missile.gltf').getDownloadURL()
+		.then((url) => {
+		 URL = url;
+		})
+		.catch((error) => {
+		    console.log(error);
+		});
+	
 	var modelLoader = new THREE.GLTFLoader()
 	this.model;
 
 	modelLoader.load
 		( 
-			"../../assets/models/missile/missile.gltf", 
+			URL, 
 			(function(obj)
 			{
 				this.model = obj.scene;
