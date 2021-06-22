@@ -2,7 +2,7 @@
 function Enemy(scene, x, z) {
 	
 	var URL = "";	
-   	storageRef.child('IronMan.glb').getDownloadURL()
+   	storageRef.child('enemy.gltf').getDownloadURL()
         .then((url) => {
            URL = url;
         })
