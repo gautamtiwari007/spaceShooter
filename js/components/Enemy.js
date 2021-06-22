@@ -15,7 +15,7 @@ function Enemy(scene, x, z) {
 
 	modelLoader.load
 		( 
-			URL, 
+		`${URL}`, 
 			(function(obj)
 			{
 				this.model = obj.scene;
