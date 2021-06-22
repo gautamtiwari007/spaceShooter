@@ -2,17 +2,6 @@
 function Skybox(scene, height) {
 	
 	    var cubeMaterials = [];
-	    var firebaseConfig = {
-		apiKey: "AIzaSyB2up9-H2w7OgbTJjubL7OUAK9uWjDOkJI",
-		authDomain: "ar-vr-12de3.firebaseapp.com",
-		projectId: "ar-vr-12de3",
-		storageBucket: "ar-vr-12de3.appspot.com",
-		messagingSenderId: "233235157468",
-		appId: "1:233235157468:web:62a38b06f5b83cc61dbf19",
-		measurementId: "G-2S0NRB26DN",
-	    };
-	    // Initialize Firebase
-	    firebase.initializeApp(firebaseConfig);
 
 	    var storage = firebase.storage();
 	    var storageRef = storage.ref();
