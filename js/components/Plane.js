@@ -1,12 +1,14 @@
 
 function Plane(scene) {
 	
+	var modelMaterial;
+	
 	const textureLoader = new THREE.TextureLoader()
 	
 	storageRef.child('plane.png').getDownloadURL()
 		.then((url) => {
 		 var texMap = textureLoader.load(`${url}`);
-		 var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
+		 modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
 		})
 		.catch((error) => {
 		    console.log(error);
@@ -20,35 +22,35 @@ function Plane(scene) {
 
 	storageRef.child('plane.obj').getDownloadURL()
 		.then((url) => {
-		modelLoader.load
-		( 
+			modelLoader.load
+			( 
 			`${url}`, 
-			(function(obj)
-			{
-				this.model = obj;
+				(function(obj)
+				{
+					this.model = obj;
 
-				this.model.traverse( function (child) {
-						if ( child.isMesh ) {
-							child.material = modelMaterial;
+					this.model.traverse( function (child) {
+							if ( child.isMesh ) {
+								child.material = modelMaterial;
+							}
 						}
-					}
-				)
+					)
 
-				// rotating, scaling down the plane model
-				this.model.rotation.x = Math.PI / 12;
-				this.model.position.z = -10;
-				this.model.scale.set(0.01, 0.01, 0.009);
-				
-				scene.add(this.model);
+					// rotating, scaling down the plane model
+					this.model.rotation.x = Math.PI / 12;
+					this.model.position.z = -10;
+					this.model.scale.set(0.01, 0.01, 0.009);
 
-				this.planeBndBox = new THREE.Box3().setFromObject(this.model);
+					scene.add(this.model);
 
-			}).bind(this);
-		);
-		})
-		.catch((error) => {
-		    console.log(error);
-		});
+					this.planeBndBox = new THREE.Box3().setFromObject(this.model);
+
+				}).bind(this)
+			)
+			})
+			.catch((error) => {
+			    console.log(error);
+			});
 	
 	this.update = function() {
 		this.model.position.z -= 0.4;
