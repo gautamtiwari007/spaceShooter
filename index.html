@@ -12,11 +12,28 @@
 	<div id="scoreboard">HEALTH: 3 &emsp; SCORE: 0</div>
 	<div id="gameover"></div>
 	<canvas id="canvas"></canvas>
+	
+	<script id="mainScript">
+		var firebaseConfig = {
+		apiKey: "AIzaSyB2up9-H2w7OgbTJjubL7OUAK9uWjDOkJI",
+		authDomain: "ar-vr-12de3.firebaseapp.com",
+		projectId: "ar-vr-12de3",
+		storageBucket: "ar-vr-12de3.appspot.com",
+		messagingSenderId: "233235157468",
+		appId: "1:233235157468:web:62a38b06f5b83cc61dbf19",
+		measurementId: "G-2S0NRB26DN",
+	    };
+	    // Initialize Firebase
+	    firebase.initializeApp(firebaseConfig);
+	    var storage = firebase.storage();
+	    var storageRef = storage.ref();
+	</script>
+	 
 
-	  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
- 	  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
-  	  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
-  	  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>
 	<!-- CDN Link to Three.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script>
 	<script src="https://unpkg.com/three@0.87.0/examples/js/loaders/OBJLoader.js"> </script>
@@ -34,20 +51,6 @@
 	<script src="js/deleteMissiles.js"></script>
 	<script src="js/SceneManager.js"></script>
 	<script src="js/main.js"></script>
-	<script id="mainScript">
-	var firebaseConfig = {
-		apiKey: "AIzaSyB2up9-H2w7OgbTJjubL7OUAK9uWjDOkJI",
-		authDomain: "ar-vr-12de3.firebaseapp.com",
-		projectId: "ar-vr-12de3",
-		storageBucket: "ar-vr-12de3.appspot.com",
-		messagingSenderId: "233235157468",
-		appId: "1:233235157468:web:62a38b06f5b83cc61dbf19",
-		measurementId: "G-2S0NRB26DN",
-	    };
-	    // Initialize Firebase
-	    firebase.initializeApp(firebaseConfig);
-	</script>
-
 </body>
 
 </html>
