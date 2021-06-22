@@ -5,8 +5,8 @@ function Plane(scene) {
 	
 	storageRef.child('plane.png').getDownloadURL()
 		.then((url) => {
-		 var texMap = textureLoader.load(`${url}`)
-		 var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})}
+		 var texMap = textureLoader.load(`${url}`);
+		 var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
 		})
 		.catch((error) => {
 		    console.log(error);
