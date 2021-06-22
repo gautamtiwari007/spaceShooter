@@ -11,7 +11,7 @@ function Plane(scene) {
 		    console.log(error);
 		});
 	
-	storageRef.child('plane.glb').getDownloadURL()
+	storageRef.child('plane.obj').getDownloadURL()
 		.then((url) => {
 		 URL2 = url;
 		})
