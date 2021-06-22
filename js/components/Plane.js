@@ -1,36 +1,41 @@
 
 function Plane(scene) {
 	
-	storageRef.child('enemy.glb').getDownloadURL()
-		.then((url) => {
-		 	
-			var modelLoader = new THREE.GLTFLoader()
-			this.model;
-		
-			this.planeBndBox;
+	const textureLoader = new THREE.TextureLoader()
+	var texMap = textureLoader.load("../../assets/textures/plane.png")
+	var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})
 
-			modelLoader.load
-				( 
-				`${url}`, 
-					(function(obj)
-					{
-						this.model = obj.scene;
+	var modelLoader = new THREE.OBJLoader()
 
-						// rotating, scaling down the plane model
-						this.model.rotation.x = Math.PI / 12;
-						this.model.position.z = -10;
-						this.model.scale.set(0.01, 0.01, 0.009);
+	this.model;
+	this.planeBndBox;
 
-						scene.add(this.model);
+	modelLoader.load
+		( 
+			"../../assets/models/plane.obj", 
+			(function(obj)
+			{
+				this.model = obj;
 
-						this.planeBndBox = new THREE.Box3().setFromObject(this.model);
-
-					}).bind(this)
+				this.model.traverse( function (child) {
+						if ( child.isMesh ) {
+							child.material = modelMaterial;
+						}
+					}
 				)
-		})
-		.catch((error) => {
-		    console.log(error);
-		});
+
+				// rotating, scaling down the plane model
+				this.model.rotation.x = Math.PI / 12;
+				this.model.position.z = -10;
+				this.model.scale.set(0.01, 0.01, 0.009);
+				
+				scene.add(this.model);
+
+				this.planeBndBox = new THREE.Box3().setFromObject(this.model);
+
+			}).bind(this)
+		);
+
 	
 	this.update = function() {
 		this.model.position.z -= 0.4;
