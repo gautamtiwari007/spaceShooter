@@ -1,10 +1,11 @@
 
 function Plane(scene) {
 	
-	var URL = "";
+	var URL1 = "";
+	var URL2 = "";
 	storageRef.child('plane.png').getDownloadURL()
 		.then((url) => {
-		 var texMap = textureLoader.load(`${url}`); 
+		  URL1 += url;
 		})
 		.catch((error) => {
 		    console.log(error);
@@ -12,13 +13,15 @@ function Plane(scene) {
 	
 	storageRef.child('plane.obj').getDownloadURL()
 		.then((url) => {
-		 URL += url;
+		 URL2 += url;
 		})
 		.catch((error) => {
 		    console.log(error);
 		});
 	
 	const textureLoader = new THREE.TextureLoader()
+	
+	var texMap = textureLoader.load(URL1);
 	
 	var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})
 
@@ -29,7 +32,7 @@ function Plane(scene) {
 
 	modelLoader.load
 		( 
-			URL, 
+			URL2, 
 			(function(obj)
 			{
 				this.model = obj;
