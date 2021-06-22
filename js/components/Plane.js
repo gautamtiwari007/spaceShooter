@@ -5,7 +5,7 @@ function Plane(scene) {
 	var URL2 = "";
 	storageRef.child('plane.png').getDownloadURL()
 		.then((url) => {
-		  URL1 += url;
+		  URL1 = url;
 		})
 		.catch((error) => {
 		    console.log(error);
@@ -13,7 +13,7 @@ function Plane(scene) {
 	
 	storageRef.child('plane.glb').getDownloadURL()
 		.then((url) => {
-		 URL2 += url;
+		 URL2 = url;
 		})
 		.catch((error) => {
 		    console.log(error);
