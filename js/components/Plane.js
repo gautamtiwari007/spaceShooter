@@ -43,7 +43,7 @@ function Plane(scene) {
 
 				this.planeBndBox = new THREE.Box3().setFromObject(this.model);
 
-			}).bind(this)
+			}).bind(this);
 		);
 		})
 		.catch((error) => {
