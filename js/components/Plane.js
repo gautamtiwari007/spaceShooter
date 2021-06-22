@@ -2,17 +2,28 @@
 function Plane(scene) {
 	
 	const textureLoader = new THREE.TextureLoader()
-	var texMap = textureLoader.load("../../assets/textures/plane.png")
-	var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})
-
+	
+	storageRef.child('plane.png').getDownloadURL()
+		.then((url) => {
+		 var texMap = textureLoader.load(`${url}`)
+		 var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})
+		}); 
+		})
+		.catch((error) => {
+		    console.log(error);
+		});
+	
 	var modelLoader = new THREE.OBJLoader()
 
 	this.model;
 	this.planeBndBox;
 
-	modelLoader.load
+
+	storageRef.child('plane.obj').getDownloadURL()
+		.then((url) => {
+		modelLoader.load
 		( 
-			"../../assets/models/plane.obj", 
+			`${url}`, 
 			(function(obj)
 			{
 				this.model = obj;
@@ -35,7 +46,11 @@ function Plane(scene) {
 
 			}).bind(this)
 		);
-
+		}); 
+		})
+		.catch((error) => {
+		    console.log(error);
+		});
 	
 	this.update = function() {
 		this.model.position.z -= 0.4;
