@@ -1,39 +1,20 @@
 
 function Plane(scene) {
 	
-	var texMap;
-	var URL2 = "";
-	storageRef.child('plane.png').getDownloadURL()
+	storageRef.child('enemy.glb').getDownloadURL()
 		.then((url) => {
-		  const textureLoader = new THREE.TextureLoader()
-		  texMap = textureLoader.load(`${url}`);
-		})
-		.catch((error) => {
-		    console.log(error);
-		});
-	
-	storageRef.child('plane.obj').getDownloadURL()
-		.then((url) => {
-		 	var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap})
-
-			var modelLoader = new THREE.OBJLoader()
-
+		 	
+			var modelLoader = new THREE.GLTFLoader()
 			this.model;
+		
 			this.planeBndBox;
 
 			modelLoader.load
 				( 
-					URL2, 
+				`${url}`, 
 					(function(obj)
 					{
-						this.model = obj;
-
-						this.model.traverse( function (child) {
-								if ( child.isMesh ) {
-									child.material = modelMaterial;
-								}
-							}
-						)
+						this.model = obj.scene;
 
 						// rotating, scaling down the plane model
 						this.model.rotation.x = Math.PI / 12;
