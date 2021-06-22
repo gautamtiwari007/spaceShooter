@@ -18,7 +18,6 @@ function Skybox(scene, height) {
 	    var storageRef = storage.ref();
 	    storageRef.child('corona_ft.png').getDownloadURL()
 		.then((url) => {
-		    var obj = document.getElementById('hiroMarker1');
 		 cubeMaterials[0] = new THREE.MeshBasicMaterial({ map: textureLoader.load(`${url}`), side: THREE.DoubleSide }); 
 		})
 		.catch((error) => {
@@ -26,7 +25,6 @@ function Skybox(scene, height) {
 		});
 	     storageRef.child('corona_bk.png').getDownloadURL()
 		.then((url) => {
-		    var obj = document.getElementById('hiroMarker1');
 		 cubeMaterials[1] = new THREE.MeshBasicMaterial({ map: textureLoader.load(`${url}`), side: THREE.DoubleSide }); 
 		})
 		.catch((error) => {
@@ -34,7 +32,6 @@ function Skybox(scene, height) {
 		});
 	     storageRef.child('corona_up.png').getDownloadURL()
 		.then((url) => {
-		    var obj = document.getElementById('hiroMarker1');
 		 cubeMaterials[2] = new THREE.MeshBasicMaterial({ map: textureLoader.load(`${url}`), side: THREE.DoubleSide }); 
 		})
 		.catch((error) => {
@@ -42,7 +39,6 @@ function Skybox(scene, height) {
 		});
 	     storageRef.child('corona_dn.png').getDownloadURL()
 		.then((url) => {
-		    var obj = document.getElementById('hiroMarker1');
 		 cubeMaterials[3] = new THREE.MeshBasicMaterial({ map: textureLoader.load(`${url}`), side: THREE.DoubleSide }); 
 		})
 		.catch((error) => {
@@ -50,7 +46,6 @@ function Skybox(scene, height) {
 		});
 	      storageRef.child('corona_rt.png').getDownloadURL()
 		.then((url) => {
-		    var obj = document.getElementById('hiroMarker1');
 		 cubeMaterials[4] = new THREE.MeshBasicMaterial({ map: textureLoader.load(`${url}`), side: THREE.DoubleSide }); 
 		})
 		.catch((error) => {
@@ -58,7 +53,6 @@ function Skybox(scene, height) {
 		});
 	      storageRef.child('corona_lf.png').getDownloadURL()
 		.then((url) => {
-		    var obj = document.getElementById('hiroMarker1');
 		 cubeMaterials[5] = new THREE.MeshBasicMaterial({ map: textureLoader.load(`${url}`), side: THREE.DoubleSide }); 
 		})
 		.catch((error) => {
