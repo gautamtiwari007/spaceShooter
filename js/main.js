@@ -42,8 +42,8 @@ function handleKeyUp(event) {
 }
 
 function render() {
-
-    requestAnimationFrame(render);
+	requestAnimationFrame(render);
+	sceneManager.update();
 }
 
 
