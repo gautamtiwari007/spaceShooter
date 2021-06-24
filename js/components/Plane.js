@@ -3,7 +3,7 @@ function Plane(scene) {
 	
 // 	var modelMaterial;
 	
-	const textureLoader = new THREE.TextureLoader()
+// 	const textureLoader = new THREE.TextureLoader()
 	
 // 	storageRef.child('plane.png').getDownloadURL()
 // 		.then((url) => {
@@ -47,14 +47,17 @@ function Plane(scene) {
 
 				}).bind(this)
 			)
+				this.update = function() {
+				this.model.position.z -= 0.4;
+			}
 			})
 			.catch((error) => {
 			    console.log(error);
 			});
 	
-	this.update = function() {
-		this.model.position.z -= 0.4;
-	}
+// 	this.update = function() {
+// 		this.model.position.z -= 0.4;
+// 	}
 
 	this.handleInput = function(keyMap, camera) {
 		
