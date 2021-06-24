@@ -1,18 +1,18 @@
 
 function Plane(scene) {
 	
-	var modelMaterial;
+// 	var modelMaterial;
 	
 	const textureLoader = new THREE.TextureLoader()
 	
-	storageRef.child('plane.png').getDownloadURL()
-		.then((url) => {
-		 var texMap = textureLoader.load(`${url}`);
-		 modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
-		})
-		.catch((error) => {
-		    console.log(error);
-		});
+// 	storageRef.child('plane.png').getDownloadURL()
+// 		.then((url) => {
+// 		 var texMap = textureLoader.load(`${url}`);
+// 		 modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
+// 		})
+// 		.catch((error) => {
+// 		    console.log(error);
+// 		});
 	
 	var modelLoader = new THREE.OBJLoader()
 
@@ -29,12 +29,12 @@ function Plane(scene) {
 				{
 					this.model = obj;
 
-					this.model.traverse( function (child) {
-							if ( child.isMesh ) {
-								child.material = modelMaterial;
-							}
-						}
-					)
+// 					this.model.traverse( function (child) {
+// 							if ( child.isMesh ) {
+// 								child.material = modelMaterial;
+// 							}
+// 						}
+// 					)
 
 					// rotating, scaling down the plane model
 					this.model.rotation.x = Math.PI / 12;
