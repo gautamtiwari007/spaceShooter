@@ -4,7 +4,7 @@ function Enemy(scene, x, z) {
 	var modelLoader = new THREE.GLTFLoader()
 	this.model;
 	
-   	storageRef.child('enemy.glb').getDownloadURL()
+   	storageRef.child('enemy.gltf').getDownloadURL()
         .then((url) => {
 		modelLoader.load
 		( 
