@@ -1,4 +1,4 @@
-function Plane(scene) {
+function Plane(scene, x, y,z) {
 	
 	var modelLoader = new THREE.GLTFLoader()
 
