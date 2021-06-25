@@ -1,25 +1,12 @@
-
 function Plane(scene) {
 	
-	const textureLoader = new THREE.TextureLoader()
-	var texMap;
-	var modelMaterial;
-	storageRef.child('plane.png').getDownloadURL()
-		.then((url) => {
-		 texMap = textureLoader.load(`${url}`);
-		 modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
-		})
-		.catch((error) => {
-		    console.log(error);
-		});
-	
-	var modelLoader = new THREE.OBJLoader()
+	var modelLoader = new THREE.GLTFLoader()
 
 	this.model;
  	this.planeBndBox;
 
 
-	storageRef.child('plane.obj').getDownloadURL()
+	storageRef.child('enemy.glb').getDownloadURL()
 		.then((url) => {
 			modelLoader.load
 			( 
@@ -27,13 +14,6 @@ function Plane(scene) {
 				(function(obj)
 				{
 					this.model = obj;
-
-					this.model.traverse( function (child) {
-							if ( child.isMesh ) {
-								child.material = modelMaterial;
-							}
-						}
-					)
 
 					// rotating, scaling down the plane model
 					this.model.rotation.x = Math.PI / 12;
