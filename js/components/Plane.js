@@ -32,9 +32,9 @@ function Plane(scene, x, z) {
 			.catch((error) => {
 			    console.log(error);
 			});
-// 	this.update = function() {
-// 				this.model.position.z -= 0.4;
-// 			}
+	this.update = function() {
+				this.model.position.z -= 0.4;
+			}
 		
 	this.handleInput = function(keyMap, camera) {
 
