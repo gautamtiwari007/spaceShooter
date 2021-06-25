@@ -17,17 +17,17 @@ function Enemy(scene, x, z) {
 				this.model.rotation.x = Math.PI / 24;
 
 				this.model.position.set(x, 0, z);
-				this.model.scale.set(0.018,0.018,0.018);
+				this.model.scale.set(0.18,0.18,0.18);
 
 				scene.add(this.model);
 			}).bind(this)
-		)
+		);
+		this.destroy = function() {
+		scene.remove(this.model);
+	}
         })
         .catch((error) => {
             console.log(error);
         });
-	this.destroy = function() {
-		scene.remove(this.model);
-	}
 }
 
