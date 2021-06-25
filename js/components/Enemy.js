@@ -17,7 +17,7 @@ function Enemy(scene, x, z) {
 				this.model.rotation.x = Math.PI / 24;
 
 				this.model.position.set(x, 0, z);
-				this.model.scale.set(0.05,0.05,0.05);
+				this.model.scale.set(0.03,0.03,0.03);
 
 				scene.add(this.model);
 			}).bind(this)
