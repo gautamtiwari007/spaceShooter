@@ -22,12 +22,12 @@ function Enemy(scene, x, z) {
 				scene.add(this.model);
 			}).bind(this)
 		)
-		this.destroy = function() {
-		scene.remove(this.model);
-	}
         })
         .catch((error) => {
             console.log(error);
         });
+	this.destroy = function() {
+		scene.remove(this.model);
+	}
 }
 
