@@ -18,7 +18,7 @@ function Plane(scene) {
 	var modelLoader = new THREE.GLTFLoader()
 
 	this.model;
-// 	this.planeBndBox;
+ 	this.planeBndBox;
 
 
 	storageRef.child('model.gltf').getDownloadURL()
@@ -44,7 +44,7 @@ function Plane(scene) {
 
 					scene.add(this.model);
 
-// 					this.planeBndBox = new THREE.Box3().setFromObject(this.model);
+ 					this.planeBndBox = new THREE.Box3().setFromObject(this.model);
 
 				}).bind(this)
 			)
