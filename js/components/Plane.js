@@ -16,10 +16,12 @@ function Plane(scene) {
 					this.model = obj;
 
 					// rotating, scaling down the plane model
-					this.model.rotation.x = Math.PI / 12;
-					this.model.position.z = -10;
-					this.model.scale.set(0.01, 0.01, 0.009);
+					this.model.rotation.y = -Math.PI / 2;
+					this.model.rotation.x = Math.PI / 24;
 
+					this.model.position.set(x, 0, z);
+					this.model.scale.set(0.0018, 0.0018, 0.0018);
+					
 					scene.add(this.model);
 
  					this.planeBndBox = new THREE.Box3().setFromObject(this.model);
