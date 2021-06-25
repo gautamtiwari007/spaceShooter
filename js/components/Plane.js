@@ -28,7 +28,7 @@ function Plane(scene) {
 			`${url}`, 
 				(function(obj)
 				{
-					this.model = obj.scene;
+					this.model = obj;
 
 					this.model.traverse( function (child) {
 							if ( child.isMesh ) {
