@@ -1,49 +1,50 @@
 
 function Plane(scene) {
 	
-	var modelMaterial;
+// 	var modelMaterial;
 	
-	const textureLoader = new THREE.TextureLoader()
+// 	const textureLoader = new THREE.TextureLoader()
 	
-	storageRef.child('plane.png').getDownloadURL()
-		.then((url) => {
-		 var texMap = textureLoader.load(`${url}`);
-		 modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
-		})
-		.catch((error) => {
-		    console.log(error);
-		});
+// 	storageRef.child('plane.png').getDownloadURL()
+// 		.then((url) => {
+// 		 var texMap = textureLoader.load(`${url}`);
+// 		 modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
+// 		})
+// 		.catch((error) => {
+// 		    console.log(error);
+// 		});
 	
-	var modelLoader = new THREE.OBJLoader()
+// 	var modelLoader = new THREE.OBJLoader()
+	var modelLoader = new THREE.GLTFLoader()
 
 	this.model;
-	this.planeBndBox;
+// 	this.planeBndBox;
 
 
-	storageRef.child('plane.obj').getDownloadURL()
+	storageRef.child('model.gltf').getDownloadURL()
 		.then((url) => {
 			modelLoader.load
 			( 
 			`${url}`, 
 				(function(obj)
 				{
-					this.model = obj;
+					this.model = obj.scene;
 
-					this.model.traverse( function (child) {
-							if ( child.isMesh ) {
-								child.material = modelMaterial;
-							}
-						}
-					)
+// 					this.model.traverse( function (child) {
+// 							if ( child.isMesh ) {
+// 								child.material = modelMaterial;
+// 							}
+// 						}
+// 					)
 
 					// rotating, scaling down the plane model
 					this.model.rotation.x = Math.PI / 12;
 					this.model.position.z = -10;
-					this.model.scale.set(0.01, 0.01, 0.009);
+// 					this.model.scale.set(0.01, 0.01, 0.009);
 
 					scene.add(this.model);
 
-					this.planeBndBox = new THREE.Box3().setFromObject(this.model);
+// 					this.planeBndBox = new THREE.Box3().setFromObject(this.model);
 
 				}).bind(this)
 			)
