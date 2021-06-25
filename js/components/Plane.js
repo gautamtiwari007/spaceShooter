@@ -21,7 +21,7 @@ function Plane(scene) {
  	this.planeBndBox;
 
 
-	storageRef.child('plane.obj').getDownloadURL()
+	storageRef.child('IronMan.obj').getDownloadURL()
 		.then((url) => {
 			modelLoader.load
 			( 
