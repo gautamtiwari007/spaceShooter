@@ -1,6 +1,5 @@
-function Plane(scene) {
+function Plane(scene, x, z) {
 	
-	const x, y, z;
 	var modelLoader = new THREE.GLTFLoader()
 
 	this.model;
