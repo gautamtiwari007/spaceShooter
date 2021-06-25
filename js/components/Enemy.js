@@ -4,7 +4,7 @@ function Enemy(scene, x, z) {
 	var modelLoader = new THREE.GLTFLoader()
 	this.model;
 	
-   	storageRef.child('enemy.glb').getDownloadURL()
+   	storageRef.child('enemy.gltf').getDownloadURL()
         .then((url) => {
 		modelLoader.load
 		( 
@@ -22,13 +22,12 @@ function Enemy(scene, x, z) {
 				scene.add(this.model);
 			}).bind(this)
 		)
+		this.destroy = function() {
+		scene.remove(this.model);
+	}
         })
         .catch((error) => {
             console.log(error);
         });
-	
-	this.destroy = function() {
-		scene.remove(this.model);
-	}
 }
 
