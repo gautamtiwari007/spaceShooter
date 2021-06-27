@@ -1,13 +1,12 @@
 function Plane(scene) {
 	
-	const textureLoader = new THREE.TextureLoader()
-	var texMap;
-	var modelMaterial;
+	
 	storageRef.child('plane.png').getDownloadURL()
 		.then((url) => {
-		texMap = textureLoader.load(`${url}`);
 		
-		modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
+		const textureLoader = new THREE.TextureLoader()
+		var texMap = textureLoader.load(`${url}`);
+		var modelMaterial = new THREE.MeshBasicMaterial({ map: texMap});
 		
 		var modelLoader = new THREE.OBJLoader()
 
